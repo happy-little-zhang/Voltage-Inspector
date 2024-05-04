@@ -1,0 +1,8 @@
+best_params,"{'eps': 0.15, 'metric': <function clustering_distance_metrics at 0x0000020211F8C040>, 'min_samples': 1}"
+best_score,0.9866136710287997
+best_labels,[0 0 1 2 1 1 1 0 2 3 0 2 1 0 1 0 2 0 3 1 1 2 1 2 2 1 1 0 1]
+Cluster Label,IDs
+0,"['0C1', '0C5', '1C9', '1E9', '265', '2F9', '363', '530']"
+1,"['0C9', '1BC', '1BD', '1C1', '1F5', '2C5', '3D1', '3E9', '3F9', '4C1', '4D1', '772']"
+2,"['0F1', '1E1', '1F1', '361', '3F1', '440', '460']"
+3,"['1E5', '370']"

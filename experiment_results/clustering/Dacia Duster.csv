@@ -1,0 +1,7 @@
+best_params,"{'eps': 0.3, 'metric': <function clustering_distance_metrics at 0x0000020211F8C040>, 'min_samples': 1}"
+best_score,0.9017857609300847
+best_labels,[0 0 1 0 2 2 2 2 0 0 0 0]
+Cluster Label,IDs
+0,"['161', '181', '1F9', '511', '551', '5DD', '65C']"
+1,['1A5']
+2,"['244', '284', '285', '354']"
