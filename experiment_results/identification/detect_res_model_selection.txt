@@ -1,61 +1,81 @@
 -------vehicle-------     --------model--------     train_num     test_num     train_time(s)     test_time(s)     per_train_time(us)     per_test_time(us)     model_size(byte)     accuracy     
-Dacia Duster              DecisionTreeClassifier    4541          4545         0.129137          0.002025         28.437965              0.445573              1527                 100.0        
-Dacia Duster              RandomForestClassifier    4541          4545         0.105367          0.005509         23.20352               1.212184              8718                 100.0        
-Dacia Duster              KNeighborsClassifier      4541          4545         0.002001          0.27286          0.440557               60.035162             7284498              100.0        
-Dacia Duster              LogisticRegression        4541          4545         0.42762           0.001984         94.168723              0.436602              5572                 100.0        
-Dacia Duster              SVC                       4541          4545         0.01855           0.012145         4.084933               2.672177              34221                100.0        
-Dacia Duster              GaussianNB                4541          4545         0.012279          0.034703         2.703932               7.63548               10274                100.0        
-Dacia Logan               DecisionTreeClassifier    15780         15799        0.662002          0.00967          41.95197               0.612035              2295                 99.99369999999999
-Dacia Logan               RandomForestClassifier    15780         15799        0.43931           0.018983         27.839675              1.20151               16422                100.0        
-Dacia Logan               KNeighborsClassifier      15780         15799        0.005001          0.901482         0.316909               57.059411             25311878             100.0        
-Dacia Logan               LogisticRegression        15780         15799        17.296511         0.004003         1096.103339            0.253374              10420                99.5886      
-Dacia Logan               SVC                       15780         15799        0.173171          0.390877         10.974099              24.740647             345385               100.0        
-Dacia Logan               GaussianNB                15780         15799        0.044157          0.188189         2.798261               11.911437             19946                99.99369999999999
-Ford Ecosport             DecisionTreeClassifier    11387         11421        0.400902          0.009005         35.206951              0.788424              1751                 100.0        
-Ford Ecosport             RandomForestClassifier    11387         11421        0.274004          0.013007         24.062898              1.138881              10966                100.0        
-Ford Ecosport             KNeighborsClassifier      11387         11421        0.003892          0.61554          0.341767               53.895437             18265490             100.0        
-Ford Ecosport             LogisticRegression        11387         11421        3.023484          0.003052         265.520723             0.267248              7188                 100.0        
-Ford Ecosport             SVC                       11387         11421        0.192376          0.137918         16.894386              12.075846             156881               100.0        
-Ford Ecosport             GaussianNB                11387         11421        0.036915          0.071495         3.24186                6.259923              13498                100.0        
-Ford Fiesta               DecisionTreeClassifier    5525          5539         0.292275          0.003311         52.90053               0.59779               3287                 99.8917      
-Ford Fiesta               RandomForestClassifier    5525          5539         0.213712          0.008223         38.680987              1.484531              22766                99.9097      
-Ford Fiesta               KNeighborsClassifier      5525          5539         0.001999          0.283802         0.361878               51.236966             8862866              99.96390000000001
-Ford Fiesta               LogisticRegression        5525          5539         7.051467          0.001982         1276.283653            0.357908              12036                97.9238      
-Ford Fiesta               SVC                       5525          5539         0.092788          0.236015         16.794248              42.609735             598717               99.1515      
-Ford Fiesta               GaussianNB                5525          5539         0.017347          0.067164         3.139703               12.125687             23170                99.8014      
-Ford Kuga                 DecisionTreeClassifier    13997         14027        1.456177          0.008173         104.034919             0.582627              10839                99.722       
-Ford Kuga                 RandomForestClassifier    13997         14027        0.949871          0.025995         67.862492              1.853247              109102               99.99289999999999
-Ford Kuga                 KNeighborsClassifier      13997         14027        0.005115          0.776993         0.365438               55.39264              22451986             99.99289999999999
-Ford Kuga                 LogisticRegression        13997         14027        35.571348         0.005958         2541.355161            0.424724              18500                93.1489      
-Ford Kuga                 SVC                       13997         14027        3.259451          6.956633         232.867857             495.945914            5988165              96.357       
-Ford Kuga                 GaussianNB                13997         14027        0.037006          0.245602         2.643862               17.509242             36066                96.243       
-Honda Civic               DecisionTreeClassifier    7274          7293         0.67525           0.003998         92.830571              0.548235              8887                 99.4927      
-Honda Civic               RandomForestClassifier    7274          7293         0.464417          0.013003         63.846227              1.782958              62862                99.78059999999999
-Honda Civic               KNeighborsClassifier      7274          7293         0.002111          0.421283         0.290206               57.765327             11668262             99.7943      
-Honda Civic               LogisticRegression        7274          7293         8.882409          0.002025         1221.117588            0.277714              12036                99.7943      
-Honda Civic               SVC                       7274          7293         0.178663          0.584387         24.561866              80.129892             1100217              99.7943      
-Honda Civic               GaussianNB                7274          7293         0.021206          0.0878           2.915269               12.03888              23170                97.052       
-Hyundai i20               DecisionTreeClassifier    8875          8892         0.441143          0.004115         49.706231              0.462734              3063                 99.96629999999999
-Hyundai i20               RandomForestClassifier    8875          8892         0.297543          0.011999         33.525924              1.349457              23438                99.9888      
-Hyundai i20               KNeighborsClassifier      8875          8892         0.002001          0.425023         0.225416               47.79834              14236266             99.97749999999999
-Hyundai i20               LogisticRegression        8875          8892         15.662915         0.003959         1764.835546            0.445279              12036                99.3477      
-Hyundai i20               SVC                       8875          8892         0.21976           0.263334         24.761657              29.614687             421913               99.88749999999999
-Hyundai i20               GaussianNB                8875          8892         0.025693          0.113882         2.895033               12.807196             23170                100.0        
-Hyundai ix35              DecisionTreeClassifier    10737         10743        0.84146           0.005997         78.370121              0.558196              4999                 99.62769999999999
-Hyundai ix35              RandomForestClassifier    10737         10743        0.543684          0.014973         50.636469              1.393716              38262                99.7952      
-Hyundai ix35              KNeighborsClassifier      10737         10743        0.003105          0.623011         0.289202               57.992262             17222906             99.8511      
-Hyundai ix35              LogisticRegression        10737         10743        14.498837         0.004111         1350.362019            0.382628              10420                98.7154      
-Hyundai ix35              SVC                       10737         10743        0.6036            0.926822         56.216778              86.272195             1224437              99.1995      
-Hyundai ix35              GaussianNB                10737         10743        0.027813          0.10149          2.590384               9.447128              19946                98.8365      
-John Deere Tractor        DecisionTreeClassifier    1980          1993         0.175971          0.001056         88.874017              0.529832              3447                 99.5484      
-John Deere Tractor        RandomForestClassifier    1980          1993         0.124799          0.003095         63.029684              1.553011              22638                99.5986      
-John Deere Tractor        KNeighborsClassifier      1980          1993         0.0               0.065042         0.0                    32.635233             3176654              100.0        
-John Deere Tractor        LogisticRegression        1980          1993         0.337596          0.001008         170.503                0.505548              5572                 97.5414      
-John Deere Tractor        SVC                       1980          1993         0.047211          0.095556         23.844146              47.94594              613369               99.39789999999999
-John Deere Tractor        GaussianNB                1980          1993         0.010669          0.014336         5.388621               7.193351              10274                90.5168      
-Opel Corsa                DecisionTreeClassifier    4575          4584         0.195058          0.003            42.635548              0.654559              1751                 100.0        
-Opel Corsa                RandomForestClassifier    4575          4584         0.162072          0.011083         35.425666              2.417681              10966                100.0        
-Opel Corsa                KNeighborsClassifier      4575          4584         0.001             0.155319         0.218616               33.882796             7339042              100.0        
-Opel Corsa                LogisticRegression        4575          4584         2.652788          0.001075         579.844303             0.234518              7188                 100.0        
-Opel Corsa                SVC                       4575          4584         0.018702          0.020012         4.087928               4.365546              57761                100.0        
-Opel Corsa                GaussianNB                4575          4584         0.014002          0.04472          3.060617               9.755762              13498                100.0        
+Dacia Duster              DecisionTreeClassifier    4541          4545         0.141445          0.002985         31.148356              0.656661              1527                 100.0        
+Dacia Duster              RandomForestClassifier    4541          4545         0.11311           0.005002         24.90852               1.10066               8718                 100.0        
+Dacia Duster              KNeighborsClassifier      4541          4545         0.001009          0.274567         0.222142               60.410704             7284498              100.0        
+Dacia Duster              LogisticRegression        4541          4545         0.286106          0.002002         63.005089              0.440537              5572                 100.0        
+Dacia Duster              SVC                       4541          4545         0.016196          0.015151         3.566671               3.333559              34221                100.0        
+Dacia Duster              GaussianNB                4541          4545         0.013182          0.027392         2.902921               6.026928              10274                100.0        
+Dacia Duster              XGBClassifier             4541          4545         0.163296          0.004056         35.960463              0.892299              29831                100.0        
+Dacia Duster              CNN1D                     4541          4545         27.570269         1.006507         6071.409237            221.453773            92000                100.0        
+Dacia Logan               DecisionTreeClassifier    15780         15799        0.700697          0.006998         44.404116              0.442943              2295                 100.0        
+Dacia Logan               RandomForestClassifier    15780         15799        0.439838          0.018113         27.873111              1.146459              16422                100.0        
+Dacia Logan               KNeighborsClassifier      15780         15799        0.004013          0.846263         0.254298               53.56432              25311878             100.0        
+Dacia Logan               LogisticRegression        15780         15799        13.59468          0.004983         861.513282             0.315412              10420                99.6645      
+Dacia Logan               SVC                       15780         15799        0.193748          0.39064          12.278073              24.725632             343701               100.0        
+Dacia Logan               GaussianNB                15780         15799        0.044593          0.152855         2.825895               9.674974              19946                99.99369999999999
+Dacia Logan               XGBClassifier             15780         15799        0.562189          0.012117         35.626656              0.766957              58765                99.9873      
+Dacia Logan               CNN1D                     15780         15799        77.233757         2.665469         4894.407892            168.711243            148448               99.8544      
+Ford Ecosport             DecisionTreeClassifier    11387         11421        0.40116           0.006054         35.229627              0.530049              1751                 100.0        
+Ford Ecosport             RandomForestClassifier    11387         11421        0.256552          0.013066         22.53021               1.144058              10966                100.0        
+Ford Ecosport             KNeighborsClassifier      11387         11421        0.003002          0.634082         0.263607               55.518963             18265490             100.0        
+Ford Ecosport             LogisticRegression        11387         11421        2.693633          0.004007         236.553357             0.350875              7188                 100.0        
+Ford Ecosport             SVC                       11387         11421        0.140014          0.113            12.295988              9.894027              155229               100.0        
+Ford Ecosport             GaussianNB                11387         11421        0.027159          0.064737         2.385128               5.668229              13498                100.0        
+Ford Ecosport             XGBClassifier             11387         11421        0.263248          0.006057         23.118332              0.530299              36527                100.0        
+Ford Ecosport             CNN1D                     11387         11421        49.482107         1.370889         4345.491059            120.032304            110816               100.0        
+Ford Fiesta               DecisionTreeClassifier    5325          5340         0.304044          0.003713         57.097511              0.695298              2295                 99.9625      
+Ford Fiesta               RandomForestClassifier    5325          5340         0.186336          0.00681          34.992728              1.275272              17046                99.94380000000001
+Ford Fiesta               KNeighborsClassifier      5325          5340         0.001999          0.231234         0.375336               43.302261             8542058              100.0        
+Ford Fiesta               LogisticRegression        5325          5340         3.366372          0.002094         632.182511             0.392141              10420                98.0337      
+Ford Fiesta               SVC                       5325          5340         0.078895          0.221025         14.816024              41.390358             707449               98.6704      
+Ford Fiesta               GaussianNB                5325          5340         0.014001          0.057524         2.629231               10.772368             19946                99.1199      
+Ford Fiesta               XGBClassifier             5325          5340         0.362692          0.00507          68.111241              0.949477              58640                99.90639999999999
+Ford Fiesta               CNN1D                     5325          5340         32.313125         1.322348         6068.192558            247.630644            148448               100.0        
+Ford Kuga                 DecisionTreeClassifier    13997         14027        1.397063          0.006098         99.811621              0.434718              10839                99.722       
+Ford Kuga                 RandomForestClassifier    13997         14027        0.928767          0.025007         66.354733              1.78276               102766               99.9715      
+Ford Kuga                 KNeighborsClassifier      13997         14027        0.004511          0.745647         0.322309               53.157995             22451986             99.99289999999999
+Ford Kuga                 LogisticRegression        13997         14027        20.795837         0.003983         1485.735295            0.283988              18500                93.2773      
+Ford Kuga                 SVC                       13997         14027        2.515996          6.859215         179.7525               489.000823            5993457              96.357       
+Ford Kuga                 GaussianNB                13997         14027        0.046511          0.245485         3.322905               17.500862             36066                96.243       
+Ford Kuga                 XGBClassifier             13997         14027        0.869184          0.013112         62.097879              0.93474               122081               98.8522      
+Ford Kuga                 CNN1D                     13997         14027        81.743822         1.980778         5840.095885            141.211787            242528               100.0        
+Honda Civic               DecisionTreeClassifier    2161          2182         0.12513           0.000998         57.903609              0.457497              2711                 100.0        
+Honda Civic               RandomForestClassifier    2161          2182         0.105242          0.003003         48.700498              1.376316              18502                100.0        
+Honda Civic               KNeighborsClassifier      2161          2182         0.000998          0.082091         0.462053               37.62184              3467002              100.0        
+Honda Civic               LogisticRegression        2161          2182         2.355815          0.001            1090.150583            0.458371              10420                100.0        
+Honda Civic               SVC                       2161          2182         0.011045          0.022567         5.11105                10.342253             180353               100.0        
+Honda Civic               GaussianNB                2161          2182         0.005984          0.017092         2.769009               7.833066              19946                100.0        
+Honda Civic               XGBClassifier             2161          2182         0.154441          0.003007         71.467431              1.377954              54338                99.9542      
+Honda Civic               CNN1D                     2161          2182         9.808715          0.786707         4538.970433            360.543962            148448               100.0        
+Hyundai i20               DecisionTreeClassifier    8875          8892         0.475057          0.005204         53.52759               0.585241              3063                 99.9888      
+Hyundai i20               RandomForestClassifier    8875          8892         0.321795          0.013107         36.258536              1.474028              22990                99.97749999999999
+Hyundai i20               KNeighborsClassifier      8875          8892         0.002998          0.491655         0.337816               55.291821             14236266             99.97749999999999
+Hyundai i20               LogisticRegression        8875          8892         9.254108          0.001977         1042.716443            0.222385              12036                99.3477      
+Hyundai i20               SVC                       8875          8892         0.195424          0.300885         22.019588              33.837715             421913               99.88749999999999
+Hyundai i20               GaussianNB                8875          8892         0.027352          0.143465         3.081899               16.134117             23170                100.0        
+Hyundai i20               XGBClassifier             8875          8892         0.515338          0.008111         58.066274              0.912141              72496                99.48270000000001
+Hyundai i20               CNN1D                     8875          8892         46.580902         1.414483         5248.552349            159.07367             167264               69.7931      
+Hyundai ix35              DecisionTreeClassifier    10737         10743        0.820196          0.005266         76.389695              0.490153              4999                 99.7114      
+Hyundai ix35              RandomForestClassifier    10737         10743        0.517825          0.017019         48.228124              1.58422               38054                99.68350000000001
+Hyundai ix35              KNeighborsClassifier      10737         10743        0.002999          0.568199         0.279276               52.890131             17222906             99.8511      
+Hyundai ix35              LogisticRegression        10737         10743        9.926134          0.004004         924.47931              0.372664              10420                98.70609999999999
+Hyundai ix35              SVC                       10737         10743        0.61018           0.955946         56.829667              88.983127             1222753              99.1995      
+Hyundai ix35              GaussianNB                10737         10743        0.028999          0.10093          2.700834               9.394997              19946                98.8365      
+Hyundai ix35              XGBClassifier             10737         10743        0.453659          0.009061         42.25196               0.843442              62663                99.6928      
+Hyundai ix35              CNN1D                     10737         10743        44.593843         1.682926         4153.286999            156.653235            148448               98.3896      
+John Deere Tractor        DecisionTreeClassifier    1980          1993         0.15201           0.000999         76.77295               0.501241              3447                 99.5484      
+John Deere Tractor        RandomForestClassifier    1980          1993         0.114477          0.004002         57.816746              2.008075              24398                99.6989      
+John Deere Tractor        KNeighborsClassifier      1980          1993         0.002006          0.071143         1.013279               35.696633             3176654              100.0        
+John Deere Tractor        LogisticRegression        1980          1993         0.230102          0.001943         116.213283             0.974848              5572                 97.5916      
+John Deere Tractor        SVC                       1980          1993         0.049937          0.083466         25.220832              41.879605             613369               99.39789999999999
+John Deere Tractor        GaussianNB                1980          1993         0.005001          0.010083         2.525912               5.059426              10274                90.5168      
+John Deere Tractor        XGBClassifier             1980          1993         0.172448          0.002048         87.094909              1.027724              39166                99.5484      
+John Deere Tractor        CNN1D                     1980          1993         6.777202          0.702779         3422.829117            352.623591            92000                73.90870000000001
+Opel Corsa                DecisionTreeClassifier    4575          4584         0.198546          0.0031           43.398122              0.676351              1751                 100.0        
+Opel Corsa                RandomForestClassifier    4575          4584         0.152516          0.007004         33.336858              1.527876              10966                100.0        
+Opel Corsa                KNeighborsClassifier      4575          4584         0.001997          0.187271         0.436554               40.853211             7339042              100.0        
+Opel Corsa                LogisticRegression        4575          4584         2.120948          0.001001         463.595156             0.218342              7188                 100.0        
+Opel Corsa                SVC                       4575          4584         0.014166          0.017187         3.096419               3.749371              57761                100.0        
+Opel Corsa                GaussianNB                4575          4584         0.015307          0.032997         3.345886               7.198327              13498                100.0        
+Opel Corsa                XGBClassifier             4575          4584         0.225285          0.004553         49.242687              0.993203              39315                99.9127      
+Opel Corsa                CNN1D                     4575          4584         41.505393         0.767815         9072.217003            167.498986            110816               100.0        

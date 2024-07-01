@@ -1,5 +1,3 @@
-import numpy as np
-import matplotlib.pyplot as plt
 import csv
 import os
 import re
@@ -11,7 +9,6 @@ from sklearn.preprocessing import StandardScaler
 
 import pandas
 import seaborn as sns
-import random
 import math
 from pympler import asizeof
 
@@ -29,12 +26,13 @@ from sklearn.tree import export_graphviz
 from sklearn.tree import export_text
 import pydotplus
 import pygraphviz as pgv
-from mlrl.boosting import Boomer
 
 
 from sklearn.metrics import accuracy_score, precision_score, f1_score, recall_score
 from sklearn.metrics import confusion_matrix
 from sklearn.metrics import classification_report
+from xgboost import XGBClassifier
+
 from my_model import *
 from common import *
 
@@ -302,8 +300,6 @@ def ecu_identification_whole_vehicle():
         #LogisticRegression(max_iter=5000),
         #SVC(),
         #GaussianNB(),
-        #MyNearestNeighbor(),
-        #MyNearestNeighbor2(),
     ]
 
     # 循环遍历每个模型
@@ -981,6 +977,7 @@ def ecu_identification():
             #LogisticRegression(max_iter=3000),
             #SVC(probability=True),
             #GaussianNB(),
+            XGBClassifier(n_estimators=10)
         ]
 
         # 循环遍历每个模型
@@ -1477,13 +1474,20 @@ def method_model_selection():
         #if file_path == "Dacia Duster" or file_path == "Dacia Logan":
         #    continue
 
-        #if file_path == "Honda Civic":
+        #if file_path == "Ford Kuga":
         #    print("vehicle:", file_path)
         #else:
         #    continue
 
-        if file_path == "Ford Fiesta" or file_path == "Honda Civic":
-            file_path = file_path + "/1_0min/"
+        # special folder formats, handled separately
+        if file_path == "Ford Fiesta":
+            #file_path = file_path + "/1_0min/"
+            file_path = file_path + "/2_10min/"
+
+        # special folder formats, handled separately
+        if file_path == "Honda Civic":
+            #file_path = file_path + "/1_0min/"
+            file_path = file_path + "/ENVIRONMENTAL_5_30min_dynamic/"
 
         # 用于存储样本特征
         features_dataset = []
@@ -1557,7 +1561,6 @@ def method_model_selection():
             #segment = calculate_curvature(segment)
             feature.append(segment)
 
-
             features_dataset.append(feature)
             # print("feature", feature)
 
@@ -1623,7 +1626,11 @@ def method_model_selection():
         #print("merged_train_dataset_list len: ", len(merged_train_dataset_list))
         #print("merged_test_dataset_list len: ", len(merged_test_dataset_list))
 
+        # 设置随机种子(确保结果可复现)
+        random_seed = 77
+        random.seed(random_seed)
         random.shuffle(merged_train_dataset_list)
+        random.seed(random_seed)
         random.shuffle(merged_test_dataset_list)
 
         # select the features
@@ -1652,6 +1659,8 @@ def method_model_selection():
             LogisticRegression(max_iter=3000),
             SVC(),
             GaussianNB(),
+            XGBClassifier(n_estimators=10),
+            CNN1D()
         ]
 
         # 循环遍历每个模型
@@ -1676,16 +1685,27 @@ def method_model_selection():
             end_time = time.time()
             train_elapsed_time = end_time - start_time
 
-
             # 将模型保存到磁盘
-            model_file_path = "model.pkl"
-            joblib.dump(model, model_file_path)
+            if model_name == "CNN1D":
+                # 神经网络单独加载
+                model_file_path = "model.h5"
+                model.model.save(model_file_path)
+            else:
+                model_file_path = "model.pkl"
+                joblib.dump(model, model_file_path)
+
             # 获取模型文件的大小
             model_file_size = os.path.getsize(model_file_path)
 
             # 加载模型
-            model = joblib.load(model_file_path)
-            #model_size = asizeof.asizeof(model)
+            if model_name == "CNN1D":
+                # 神经网络单独加载
+                model_file_path = "model.h5"
+                model.model = load_model(model_file_path)
+            else:
+                model_file_path = "model.pkl"
+                model = joblib.load(model_file_path)
+
             # 在测试集上进行预测
             # start_time
             start_time = time.time()
@@ -1695,7 +1715,6 @@ def method_model_selection():
             # end_time
             end_time = time.time()
             test_elapsed_time = end_time - start_time
-
 
             # 计算分类准确度
             #print("type(Y_test): ", type(Y_test))
@@ -3169,10 +3188,10 @@ def main():
     #ecu_identification_whole_vehicle()           # 10辆车一起的分类  固定参数 1.7 200 different
     #ecu_identification_whole_vehicle_ecuprint()  # 10辆车一起的分类  固定参数 1.7 200 different
 
-    ecu_identification()                    # 精心挑选的参数，混淆矩阵存储
+    #ecu_identification()                    # 精心挑选的参数，混淆矩阵存储
     #ecu_identification_with_feature()
 
-    #method_model_selection()                # 固定阈值1.7和长度200，不同分类模型的比较
+    method_model_selection()                # 固定阈值1.7和长度200，不同分类模型的比较
     #method_parameter_selection()           # VInspector模型固定，different不同阈值和长度下的检测比较
     #method_parameter_selection_gradient()  # VInspector模型固定，gradient不同阈值和长度下的检测比较
     #method_comparison()                    # VInspector(固定阈值和长度,固定模型)与baseline、ECUPrint方法比较
