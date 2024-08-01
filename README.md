@@ -7,10 +7,11 @@ By releasing our source code, we aim to facilitate research in this area and enc
 ## 1.Voltage-Inspector-source-code
 Whole Source file are implemented in Python language.
 
-To run this code successfully, please ensure there are ECUPrint dataset under the folder "Voltage-Inspector\ECUPrint_dataset\". (You can download the ECUPrint dataset from the links "https://github.
-com/LucianPopaLP/ECUPrint")
+To run this code successfully, please ensure there are ECUPrint dataset under the folder "Voltage-Inspector\ECUPrint_dataset\". 
 
-## 2.Bit-Scanner-experiments-results
+(You can download the ECUPrint dataset from the links "https://github.com/LucianPopaLP/ECUPrint")
+
+## 2.Voltage-Inspector-experiments-results
 Visualization and analysis of experiments results are implemented in python language.
 
 # 3.Paper details
