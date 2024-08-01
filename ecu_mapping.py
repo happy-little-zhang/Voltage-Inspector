@@ -11,6 +11,7 @@ import seaborn as sns
 import plotly.graph_objects as go
 from common import *
 
+
 def ecu_clustering():
     dataset_path = "ECUPrint_dataset"
     file_paths = os.listdir(dataset_path)
@@ -159,7 +160,7 @@ def ecu_clustering():
 
         # clustering
         train_data = features_dataset
-        train_data = data_reorganization(train_data)
+        train_data = data_reorganization(train_data)    #average representation of samples
 
         #print(train_data)
         #print("len(data)", len(train_data))
@@ -345,7 +346,12 @@ def ecu_clustering():
             # 显示图表
             fig.show()
 
+
 def ecu_clustering_validation():
+    """
+    plot the evidence for the Ford Kuga vehicle
+    :return:
+    """
     dataset_path = "ECUPrint_dataset"
     file_paths = os.listdir(dataset_path)
     # print(file_paths)
@@ -467,7 +473,7 @@ def ecu_clustering_validation():
 
         # clustering
         train_data = features_dataset
-        train_data = data_reorganization(train_data)
+        train_data = data_reorganization(train_data)    #average representation of samples
 
         #print(train_data)
         #print("len(data)", len(train_data))
@@ -506,6 +512,7 @@ def ecu_clustering_validation():
             savefig_path = "experiment_results/clustering/validation/Ford Kuga_fig2.jpg"
             plt.savefig(savefig_path, dpi=300)
             plt.close()
+
 
 def ecu_clustering_search_optimization():
     dataset_path = "ECUPrint_dataset"
@@ -852,10 +859,231 @@ def ecu_clustering_search_optimization():
             plt.show()
 
 
+def plotly_validation_example():
+    dataset_path = "ECUPrint_dataset"
+    file_paths = os.listdir(dataset_path)
+    # print(file_paths)
+
+    count = 0
+    jump_flag = 0
+
+    # Traverse each file path
+    for file_path in file_paths:
+
+        if jump_flag == 1:
+            break
+
+        print("vehicle:", file_path)
+        # "Dacia Duster"
+        # "Dacia Logan"
+        # "Ford Ecosport"
+        # "Ford Fiesta"  (environmental changes)
+        # "Ford Kuga"
+        # "Honda Civic"  (environmental changes)
+        # "Hyundai i20"
+        # "Hyundai ix35"
+        # "John Deere Tractor"
+        # "Opel Corsa"
+
+        vehicle_name = file_path
+        if file_path == "Ford Kuga":
+            print("vehicle:", file_path)
+        else:
+            continue
+
+        # special folder formats, handled separately
+        if file_path == "Ford Fiesta":
+            file_path = file_path + "/1_0min/"
+            #file_path = file_path + "/2_10min/"
+
+        # special folder formats, handled separately
+        if file_path == "Honda Civic":
+            #file_path = file_path + "/1_0min/"
+            file_path = file_path + "/ENVIRONMENTAL_5_30min_dynamic/"
+
+        # 用于存储样本特征
+        features_dataset = []
+
+        # 获取文件路径下的所有文件名
+        file_names = os.path.join(dataset_path, file_path)
+        # print(file_names)
+
+        file_names = os.listdir(file_names)
+        # print(file_names)
+
+        # 遍历每个文件名
+        for file_name in file_names:
+
+            if jump_flag == 1:
+                break
+
+            # print("file_name:", file_name)
+            # 正则表达式匹配文件名
+            # 统一的文件名格式,使用“|”将多个规则连到一起
+            pattern = r'^\[\d+\]_\w+\_extracted_extracted_ZERO_\[\d+\].csv|' \
+                      r'^\[\d+\]_\w+\_extracted_extracted_ZERO_\[\d+\]_\w+\.csv|' \
+                      r'^\[\d+\]_\w+\_extracted_extracted_ZERO_\[\d+\]_Logan_\d+\.csv|' \
+                      r'^\[\d+\]_\w+\_\d+\_DATA\d+\_extracted_ZERO_\[\d+\]001_002_003\.csv|' \
+                      r'^\[\d+\]_\w+\_extracted_extracted_ZERO_\[\d+\]_cold_\d+\.csv'
+
+            file_re_flag = 0
+            # 判断文件名是否匹配统一格式
+            if re.match(pattern, file_name):
+                file_re_flag = 1
+            else:
+                # 文件名格式不匹配，忽略该文件
+                # print(f'Ignoring file: {file_name}')
+                continue
+
+            # 构建完整的文件路径
+            # file = os.path.join(file_path, file_name)
+            file = os.path.join(dataset_path, file_path, file_name)
+
+            print(file)
+            with open(file, 'r') as csv_file:
+                lines = csv_file.readlines()
+
+                # 读取特殊格式数据
+                special_data = [line.strip() for line in lines[0:3]]
+                # print(special_data)
+
+                # 读取标准的CSV数据
+                reader = csv.reader(lines[5:])
+                header = next(reader)
+                data = list(reader)
+
+            # 提取数据
+            feature = []
+            current_id = special_data[0]
+            feature.append(current_id)
+
+            threshold = parameter_thresholds[vehicle_name]
+            seg_length = parameter_length[vehicle_name]
+            segment = segment_extract(data, threshold, seg_length)
+            if len(segment) == 0:
+                continue
+            func = parameter_function[vehicle_name]
+            if func == "gradient":
+                segment = np.gradient(segment)
+
+            feature.append(segment)
+
+            features_dataset.append(feature)
+            # print("feature", feature)
+
+            count = count + 1
+            print(count)
+            #if count > 3000:
+            #    jump_flag = 1
+            #    break
+
+        # print(vehicle_name + " features_dataset:")
+        # print(features_dataset)
+
+        plt_sto_flag = 0
+        if plt_sto_flag == 1:
+
+            plt.clf()
+            for current_id, segment in features_dataset:
+                plt.plot(np.arange(len(segment)), segment)
+            plt.show()
+            # 指定路径
+            #base_path = "experiment_results/segment_plt"
+            #figure_name = vehicle_name + "_differential.jpg"
+            #savefig_path = os.path.join(base_path, figure_name)
+            #plt.savefig(savefig_path, dpi=300)
+            #plt.close()
+
+            plt.clf()
+            for current_id, segment in features_dataset:
+                plt.plot(np.arange(len(np.gradient(segment))), np.gradient(segment))
+            plt.show()
+            # 指定路径
+            #base_path = "experiment_results/segment_plt"
+            #figure_name = vehicle_name + "_gradient.jpg"
+            #savefig_path = os.path.join(base_path, figure_name)
+            #plt.savefig(savefig_path, dpi=300)
+            #plt.close()
+
+        # clustering
+        train_data = features_dataset
+        train_data = data_reorganization(train_data)     # average representation of samples
+
+        #print(train_data)
+        #print("len(data)", len(train_data))
+        # 创建对应的标签列表
+        labels = [row[0] for row in train_data]
+        # 将字典中的样本数据转换为列表
+        samples = [row[1] for row in train_data]
+        samples = np.array(samples)
+        print(samples.shape)
+        # print("labels", labels)
+        # print("samples", samples)
+
+        dynamic_plot_flag = 1
+        if dynamic_plot_flag == 1:
+            id_list = []
+            # 创建图表数据
+            plt_data = []
+            sub_data_range = []
+
+            # plot 多图
+            for row in train_data:
+                # print(row)
+                # 使用eval函数解析数据
+                # 解析数据
+                cc_id = row[0]
+                voltage_data = row[1]
+                # print(voltage_data)
+
+                # 将浮点数转换为NumPy数组
+                data_array = np.array(voltage_data, dtype=float)
+
+                # print(data_array)
+                # print(data_array.shape)
+                index = np.arange(data_array.shape[0])
+                # plt.plot(index, recessive_data, color='b', label='recessive_data')
+                #plt.plot(index, data_array)
+
+                # 相同ID画一次图就可以了
+                if cc_id not in id_list:
+                    id_list.append(cc_id)
+                    plt_data.append(go.Scatter(x=index, y=data_array, name=cc_id))
+                    # plt_data.append(go.Scatter(x=index, y=data_array))
+                    sub_data_range.append(data_array.shape[0])
+
+            # 交互动态界面
+            # 创建图表数据
+            # 创建布局
+            layout = go.Layout(
+                showlegend=True,
+                updatemenus=[
+                    {
+                        'buttons': [
+                            {
+                                'method': 'update',
+                                'label': label,
+                                'args': [{'visible': [index == i for i in range(len(sub_data_range))]}]
+                            } for index, label in enumerate([f'Curve {i + 1}' for i in range(len(sub_data_range))])
+                        ],
+                        'direction': 'down',
+                        'showactive': True,
+                    }
+                ]
+            )
+            # 创建图表对象
+            fig = go.Figure(data=plt_data, layout=layout)
+            # 显示图表
+            fig.show()
+
+
 def main():
-    ecu_clustering()                                  # 每辆车单独聚类
-    #ecu_clustering_validation()                       # 聚类结果单独验证
+    #ecu_clustering()                                  # 每辆车单独聚类
+    #ecu_clustering_validation()                       # 聚类结果单独验证  plot the evidence for the Ford Kuga vehicle
     #ecu_clustering_search_optimization()              # 暴力遍历参数，得出最佳聚类结果
+
+    plotly_validation_example()                        # validation example by plotly library
+
 
 if __name__ == '__main__':
     main()

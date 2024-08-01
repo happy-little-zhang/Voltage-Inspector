@@ -2512,6 +2512,7 @@ def method_parameter_selection_gradient():
     if save_res_flag:
         res_file.close()
 
+
 def method_comparison():
     dataset_path = "ECUPrint_dataset"
     file_paths = os.listdir(dataset_path)
@@ -3191,10 +3192,10 @@ def main():
     #ecu_identification()                    # 精心挑选的参数，混淆矩阵存储
     #ecu_identification_with_feature()
 
-    method_model_selection()                # 固定阈值1.7和长度200，不同分类模型的比较
+    #method_model_selection()                # 固定阈值1.7和长度200，不同分类模型的比较
     #method_parameter_selection()           # VInspector模型固定，different不同阈值和长度下的检测比较
     #method_parameter_selection_gradient()  # VInspector模型固定，gradient不同阈值和长度下的检测比较
-    #method_comparison()                    # VInspector(固定阈值和长度,固定模型)与baseline、ECUPrint方法比较
+    method_comparison()                    # VInspector(固定阈值和长度,固定模型)与baseline、ECUPrint方法比较
     #method_test_single()                   # VInspector 单独测试
 
 if __name__ == '__main__':

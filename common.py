@@ -49,7 +49,7 @@ parameter_thresholds = {
     "Dacia Logan": 1.7,         # 1.7
     "Ford Ecosport": 1.7,
     "Ford Fiesta": 1.7,         # 1.7
-    "Ford Kuga": 1.75,           # 1.8
+    "Ford Kuga": 1.8,           # 1.8
     "Honda Civic": 1.5,         # 1.5, 1.7
     "Hyundai i20": 1.8,         # 1.8, 1.7
     "Hyundai ix35": 1.85,        # 1.8, 1.7
@@ -74,6 +74,7 @@ parameter_length = {
 def data_reorganization(data):
     '''
     # 根据样本特征值计算特征值mean or median
+    average representation of samples
     :param data:
     :return:
     '''
